@@ -1,0 +1,20 @@
+﻿/**
+ * @author Andrew Dodson
+ * @description
+ */
+button.jquery-share {
+	position:relative;
+}
+	button.jquery-share span.img{
+		display:inline-block;
+		vertical-align:middle;
+		width:16px;
+		height:16px;
+		background-image:url(icon.png);
+	}
+
+	button.jquery-share span.count:not(:empty){
+		border-left:1px solid grey;
+		margin-left:5px;
+		padding-left:5px;
+	}
