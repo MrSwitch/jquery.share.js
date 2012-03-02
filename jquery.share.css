@@ -12,9 +12,11 @@ button.jquery-share {
 		height:16px;
 		background-image:url(icon.png);
 	}
-
+	button.jquery-share span{
+		vertical-align:middle;
+	}
 	button.jquery-share span.count:not(:empty){
-		border-left:1px solid grey;
-		margin-left:5px;
+		border-left:1px solid gray;
 		padding-left:5px;
+		vertical-align:middle;
 	}

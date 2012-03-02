@@ -7,11 +7,11 @@
  */
 (function($){
 
-	/**
-	 * The share function binds an on click event listeners to a DOM element.
-	 * 
-	 * 'Click' shall displays a list of network service that you may share the current page with. If the user clicks yes then the 
-	 */
+	//
+	// The share function binds an on click event listeners to a DOM element.
+	// 
+	// 'Click' shall displays a list of network service that you may share the current page with. If the user clicks yes then the 
+	//
 	$.fn.share = function(title, link){
 
 		/*	<button data-href="http://www.google.com/buzz/post?url={$url}&message={$message}&imageurl={$image}" data-dimension="700x450">\
@@ -78,7 +78,7 @@
 			.click(function(){
 
 				var a = {
-					url 	: ( $(this).parent().attr('data-link') || (document.URL || window.location.href).replace(/[\(\)]/g,'')),
+					url		: ( $(this).parent().attr('data-link') || (document.URL || window.location.href).replace(/[\(\)]/g,'')),
 					message	: ( $(this).parent().attr('data-title') || document.title.replace(/\#.*/,'') ), // CAPTURE #, for some reason this ia a bug in IE
 					image	: $('meta[name=image_src]').attr('content'),
 					lang	: (window.navigator.browserLanguage||window.navigator.language)
@@ -97,6 +97,6 @@
 			})
 			.appendTo(this);
 		});		
-	}
+	};
 
 })(jQuery);
