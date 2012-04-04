@@ -1,16 +1,16 @@
-/**
- * jquery.share.js
- * Appends Popular Share buttons to a DOM element
- *
- * @author Andrew Dodson
- * 
- */
+//
+// jquery.share.js
+// Appends Popular Share buttons to a DOM element
+//
+// @author Andrew Dodson
+//
+
 (function($){
 
 	//
 	// The share function binds an on click event listeners to a DOM element.
-	// 
-	// 'Click' shall displays a list of network service that you may share the current page with. If the user clicks yes then the 
+	//
+	// 'Click' shall displays a list of network service that you may share the current page with. If the user clicks yes then the
 	//
 	$.fn.share = function(title, link){
 
@@ -70,7 +70,7 @@
 				</button>')
 			.each(function(){
 				this.title = "Share with " + $(this).text().replace(/\s*/g,'');
-				
+
 				// Add counter Div
 				$(this).append('<span class="count"></span>');
 
@@ -96,7 +96,7 @@
 				}), 'buzz', 'width='+w+'px,height='+h+'px,left='+l+'px,top='+t+'px,resizeable,scrollbars');
 			})
 			.appendTo(this);
-		});		
+		});
 	};
 
 })(jQuery);
