@@ -47,13 +47,13 @@
 	
 			// And the number of FaceBooks
 			$.getJSON('http://api.ak.facebook.com/restserver.php?v=1.0&method=links.getStats&urls=%5B%22'+ encodeURIComponent(url) +'%22%5D&format=json&callback=?', function(json){
-				callback('facebook', json[0].total_count);
+				callback('facebook', (json && json.length>=1 && "total_count" in json[0] ? [0].total_count : 0));
 			});
 	
 			// And the number of tweets
 			// HAD Trouble with the twitter caching locally and failing to return the number of tweets.
 			$.getJSON('http://urls.api.twitter.com/1/urls/count.json?url='+encodeURIComponent(url)+'&noncache='+Math.random()+'&callback=?', function(json){
-				callback('twitter', json.count);
+				callback('twitter', json.count||0);
 			});
 
 			// any need to change the DOM?
@@ -90,10 +90,15 @@
 					w = m[0];
 					h = m[1];
 				}
-				var l = (screen.width/2)-(w/2), t = (screen.height/2)-(h/2);
-				window.open( $(this).attr('data-href').replace(/\{\$(.*?)\}/ig, function(m,p1){
-					return (p1 in a)?encodeURIComponent(a[p1]):'';
-				}), 'buzz', 'width='+w+'px,height='+h+'px,left='+l+'px,top='+t+'px,resizeable,scrollbars');
+				var l = (screen.width/2)-(w/2), t = (screen.height/2)-(h/2),
+					uri = $(this).attr('data-href').replace(/\{\$(.*?)\}/ig, function(m,p1){
+						return (p1 in a)?encodeURIComponent(a[p1]):'';
+					});
+
+				// is this in the iOS pinned mode?
+				window.open( uri,
+					("standalone" in window.navigator && window.navigator.standalone ? '_blank' : 'buzz'),
+					'width='+w+'px,height='+h+'px,left='+l+'px,top='+t+'px,resizeable,scrollbars');
 			})
 			.appendTo(this);
 		});
